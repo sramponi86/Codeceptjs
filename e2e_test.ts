@@ -1,7 +1,11 @@
 Feature('Zero Bank application');
 
-Scenario('Login test',  ({ I }) => {
+Before(({ I }) => {
+    console.log('BEFORE HOOK')
     I.amOnPage('http://zero.webappsecurity.com/index.html')
+});
+
+Scenario('Login test',  ({ I }) => {
     I.click('#signin_button')
     I.seeElement('#login_form')
 
@@ -10,4 +14,8 @@ Scenario('Login test',  ({ I }) => {
     I.click('.btn-primary')
 
     I.seeElement('.alert-error')
+});
+
+After(({ I }) => {
+    console.log('AFTER HOOK')
 });
